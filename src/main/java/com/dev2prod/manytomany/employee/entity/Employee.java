@@ -1,11 +1,17 @@
 package com.dev2prod.manytomany.employee.entity;
 
-import com.dev2prod.manytomany.project.entity.Project;
-import lombok.Data;
-
-import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import lombok.Data;
 
 @Entity
 @Data

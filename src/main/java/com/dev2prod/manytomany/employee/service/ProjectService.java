@@ -1,12 +1,12 @@
-package com.dev2prod.manytomany.project.service;
+package com.dev2prod.manytomany.employee.service;
 
-import com.dev2prod.manytomany.employee.entity.Employee;
-import com.dev2prod.manytomany.project.entity.Project;
-import com.dev2prod.manytomany.project.repository.ProjectRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.dev2prod.manytomany.employee.entity.Project;
+import com.dev2prod.manytomany.employee.repository.ProjectRepository;
 
 @Service
 public class ProjectService {
