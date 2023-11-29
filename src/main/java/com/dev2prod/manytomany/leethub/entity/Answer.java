@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class Answer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long answer_id;
     private String code_acceptance;
     private String code_language;

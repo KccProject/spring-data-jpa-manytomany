@@ -3,11 +3,14 @@ package com.dev2prod.manytomany.leethub.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -26,7 +29,7 @@ import lombok.Setter;
 public class Question {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long question_id;
     private String question_title;
     private String question_url;
@@ -37,6 +40,16 @@ public class Question {
     private String ques_accepted;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "userQuestions")
-    private Set<User> userSet= new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "difficulty_id")
+    private Difficulty difficulty;
+
+    @ManyToMany(mappedBy = "questionsSet", cascade = CascadeType.ALL)
+    private Set<Topic> topicSet= new HashSet<>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Platform platform;
+
 }

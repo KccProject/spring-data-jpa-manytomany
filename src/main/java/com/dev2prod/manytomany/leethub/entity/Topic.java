@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 import lombok.Data;
 
@@ -17,14 +17,14 @@ import lombok.Data;
 @Data
 public class Topic {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long topic_id;
     private String topic_name;
 
-    @OneToMany(mappedBy = "")
+    @ManyToMany
     @JoinTable(name = "question_topic_mapping",
             joinColumns = @JoinColumn(name = "topic_id"),
             inverseJoinColumns = @JoinColumn(name = "question_id")
     )
-    private Set<Question> questionSet = new HashSet<>();
+    private Set<Question> questionsSet = new HashSet<>();
 }
