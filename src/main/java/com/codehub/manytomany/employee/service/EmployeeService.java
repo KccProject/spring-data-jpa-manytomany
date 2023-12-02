@@ -37,13 +37,13 @@ package com.codehub.manytomany.employee.service;
 //         employeeRepository.deleteById(empId);
 //     }
 
-//     public Employee assignProjectToEmployee(Long empId, Long projectId) {
-//         Set<Project> projectSet = null;
-//         Employee employee = employeeRepository.findById(empId).get();
-//         Project project = projectRepository.findById(projectId).get();
-//         projectSet =  employee.getAssignedProjects();
-//         projectSet.add(project);
-//         employee.setAssignedProjects(projectSet);
-//         return employeeRepository.save(employee);
-//     }
+    // public Employee assignProjectToEmployee(Long empId, Long projectId) {
+    //     Set<Project> projectSet = null;
+    //     Employee employee = employeeRepository.findById(empId).get();
+    //     Project project = projectRepository.findById(projectId).get();
+    //     projectSet =  employee.getAssignedProjects();
+    //     projectSet.add(project);
+    //     employee.setAssignedProjects(projectSet);
+    //     return employeeRepository.save(employee);
+    // }
 // }
