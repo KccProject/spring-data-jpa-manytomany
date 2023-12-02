@@ -11,7 +11,7 @@ import com.codehub.manytomany.leethub.repository.TopicRepository;
 
 @Service
 public class TopicService {
-    
+
     // @Autowired
     private final TopicRepository topicRepository;
 
@@ -19,7 +19,7 @@ public class TopicService {
     public TopicService(TopicRepository topicRepository) {
         this.topicRepository = topicRepository;
     }
-    
+
     public Topic saveTopic(Topic topic) {
         return topicRepository.save(topic);
     }
@@ -30,8 +30,11 @@ public class TopicService {
 
     public Optional<Topic> getTopicById(Long id) {
         return topicRepository.findById(id);
-        
-    
+
+    }
+
+    public void deleteTopic(Long topic_id) {
+        topicRepository.deleteById(topic_id);
     }
 
 }
