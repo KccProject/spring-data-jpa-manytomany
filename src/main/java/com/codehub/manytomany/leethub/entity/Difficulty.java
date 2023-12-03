@@ -15,7 +15,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Difficulty {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long difficulty_id;

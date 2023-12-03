@@ -16,7 +16,7 @@ import com.codehub.manytomany.leethub.entity.Question;
 import com.codehub.manytomany.leethub.service.QuestionService;
 
 @RestController
-@RequestMapping("/api/questions")
+@RequestMapping("/api/question")
 public class QuestionController {
 
     private final QuestionService questionService;
