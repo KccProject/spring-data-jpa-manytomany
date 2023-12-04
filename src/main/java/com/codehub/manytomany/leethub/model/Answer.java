@@ -1,4 +1,4 @@
-package com.codehub.manytomany.leethub.entity;
+package com.codehub.manytomany.leethub.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

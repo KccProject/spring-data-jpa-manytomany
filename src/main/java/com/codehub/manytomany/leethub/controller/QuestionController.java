@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codehub.manytomany.leethub.entity.Question;
+import com.codehub.manytomany.leethub.model.Question;
 import com.codehub.manytomany.leethub.service.QuestionService;
 
 @RestController
@@ -41,7 +41,7 @@ public class QuestionController {
         return questionService.saveQuestion(question);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void deleteQuestion(@PathVariable Long id) {
         questionService.deleteQuestion(id);
     }

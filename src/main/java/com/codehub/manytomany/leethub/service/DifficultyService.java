@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.codehub.manytomany.leethub.entity.Difficulty;
+import com.codehub.manytomany.leethub.model.Difficulty;
 import com.codehub.manytomany.leethub.repository.DifficultyRepository;
 
 @Service

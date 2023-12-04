@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codehub.manytomany.leethub.entity.Platform;
+import com.codehub.manytomany.leethub.model.Platform;
 import com.codehub.manytomany.leethub.service.PlatformService;
 
 @RestController
@@ -46,7 +46,7 @@ public class PlatformController {
         }
     }
 
-    @DeleteMapping("/delete/{platform_id}")
+    @DeleteMapping("/{platform_id}")
     public void deletePlatform(@PathVariable Long platform_id) {
         platformService.deletePlatform(platform_id);
     }

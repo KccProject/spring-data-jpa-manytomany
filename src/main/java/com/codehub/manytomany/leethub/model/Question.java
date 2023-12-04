@@ -1,4 +1,4 @@
-package com.codehub.manytomany.leethub.entity;
+package com.codehub.manytomany.leethub.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -51,6 +51,7 @@ public class Question {
             CascadeType.REMOVE }, fetch = FetchType.LAZY)
     @JoinTable(name = "question_topic_mapping", joinColumns = @JoinColumn(name = "question_id"), inverseJoinColumns = @JoinColumn(name = "topic_id"))
     private Set<Topic> topicSet = new HashSet<>();
+    private Set<QuestionTopicMapping> questionTopicMappings = new HashSet<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "platform_id")

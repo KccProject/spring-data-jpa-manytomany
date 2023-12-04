@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codehub.manytomany.leethub.entity.Difficulty;
+import com.codehub.manytomany.leethub.model.Difficulty;
 import com.codehub.manytomany.leethub.service.DifficultyService;
 
 @RestController
@@ -30,7 +30,7 @@ public class DifficultyController {
         return difficultyService.saveDifficulty(difficulty);
     }
 
-    @DeleteMapping("/delete/{difficulty_id}")
+    @DeleteMapping("/{difficulty_id}")
     public void deleteDifficulty(@PathVariable Long difficulty_id) {
         difficultyService.deleteDifficulty(difficulty_id);
     }

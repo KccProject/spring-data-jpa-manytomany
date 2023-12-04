@@ -1,4 +1,4 @@
-package com.codehub.manytomany.leethub.entity;
+package com.codehub.manytomany.leethub.model;
 
 import java.util.HashSet;
 import java.util.Set;
