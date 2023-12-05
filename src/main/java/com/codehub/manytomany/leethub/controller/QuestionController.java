@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,7 @@ public class QuestionController {
     @Autowired
     public QuestionController(QuestionService questionService) {
         this.questionService = questionService;
+
     }
 
     @GetMapping
@@ -46,4 +48,17 @@ public class QuestionController {
         questionService.deleteQuestion(id);
     }
 
+    // @PostMapping("/{questionId}/add-topic/{topicId}")
+    // public ResponseEntity<String> addTopicToQuestion(
+    // @PathVariable Long questionId,
+    // @PathVariable Long topicId) {
+    // return questionService.addTopicToQuestion(questionId, topicId);
+    // }
+
+    @PutMapping("/{questionId}/add-topic/{topicId}")
+    public Question addTopicToQuestion(
+            @PathVariable Long questionId,
+            @PathVariable Long topicId) {
+        return questionService.addTopicToQuestion(questionId, topicId);
+    }
 }

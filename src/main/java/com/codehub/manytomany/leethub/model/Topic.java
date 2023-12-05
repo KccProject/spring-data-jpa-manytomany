@@ -21,8 +21,7 @@ public class Topic {
     private Long topic_id;
     private String topic_name;
 
-    @ManyToMany(mappedBy = "topicSet", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "topicsSet", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Question> questionsSet = new HashSet<>();
-    private Set<QuestionTopicMapping> questionTopicMappings = new HashSet<>();
 
 }
