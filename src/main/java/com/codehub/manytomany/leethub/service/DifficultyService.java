@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codehub.manytomany.leethub.model.Difficulty;
+import com.codehub.manytomany.leethub.model.Question;
 import com.codehub.manytomany.leethub.repository.DifficultyRepository;
 
 @Service
@@ -32,6 +33,18 @@ public class DifficultyService {
 
     public void deleteDifficulty(Long difficulty_id) {
         difficultyRepository.deleteById(difficulty_id);
+    }
+
+    public Difficulty addQuestionToDifficulty(Long difficultyId, Question question) {
+        Optional<Difficulty> optionalDifficulty = difficultyRepository.findById(difficultyId);
+        if (optionalDifficulty.isPresent()) {
+            Difficulty difficulty = optionalDifficulty.get();
+            difficulty.getQuestionsSet().add(question);
+            return difficultyRepository.save(difficulty);
+        } else {
+            // Handle case where Difficulty is not found
+            return null;
+        }
     }
 
 }

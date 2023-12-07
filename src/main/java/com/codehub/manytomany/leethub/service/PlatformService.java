@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codehub.manytomany.leethub.model.Platform;
+import com.codehub.manytomany.leethub.model.Question;
 import com.codehub.manytomany.leethub.repository.PlatformRepository;
 
 @Service
@@ -32,6 +33,18 @@ public class PlatformService {
 
     public void deletePlatform(Long platform_id) {
         platformRepository.deleteById(platform_id);
+    }
+
+    public Platform addQuestionToPlatform(Long platformId, Question question) {
+        Optional<Platform> optionalPlatform = platformRepository.findById(platformId);
+        if (optionalPlatform.isPresent()) {
+            Platform platform = optionalPlatform.get();
+            platform.getQuestionsSet().add(question);
+            return platformRepository.save(platform);
+        } else {
+            // Handle case where Platform is not found
+            return null;
+        }
     }
 
 }
