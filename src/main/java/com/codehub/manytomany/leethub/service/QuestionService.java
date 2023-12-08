@@ -33,6 +33,7 @@ public class QuestionService {
         this.platformService = platformService;
         this.difficultyService = difficultyService;
         this.userService = userService;
+
     }
 
     public List<Question> getAllQuestions() {
@@ -146,4 +147,27 @@ public class QuestionService {
             return null;
         }
     }
+
+    // public Question addAnswerToQuestion(Long questionId, Long answerId) {
+    // Optional<Question> optionalQuestion =
+    // questionRepository.findById(questionId);
+    // Optional<Answer> optionalAnswer = answerService.getAnswerById(answerId);
+
+    // if (optionalQuestion.isPresent() && optionalAnswer.isPresent()) {
+    // Question question = optionalQuestion.get();
+    // Answer answer = optionalAnswer.get();
+
+    // // Check if the association already exists to avoid duplicates
+    // if (!question.getAnswers().contains(answer)) {
+    // question.getAnswers().add(answer);
+    // return questionRepository.save(question);
+    // } else {
+    // // Handle case where the association already exists
+    // return null;
+    // }
+    // } else {
+    // // Handle case where Question or Answer not found
+    // return null;
+    // }
+    // }
 }

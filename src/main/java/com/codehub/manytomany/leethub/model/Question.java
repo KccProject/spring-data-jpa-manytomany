@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,7 +45,7 @@ public class Question {
     private Long ques_dislikes;
     private String ques_accepted;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("questionsSet")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "difficulty_id")
     private Difficulty difficulty;
@@ -55,6 +55,7 @@ public class Question {
     @JoinTable(name = "question_topic_mapping", joinColumns = @JoinColumn(name = "question_id"), inverseJoinColumns = @JoinColumn(name = "topic_id"))
     private Set<Topic> topicsSet = new HashSet<>();
 
+    @JsonIgnoreProperties("questionsSet")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "platform_id")
     private Platform platform;

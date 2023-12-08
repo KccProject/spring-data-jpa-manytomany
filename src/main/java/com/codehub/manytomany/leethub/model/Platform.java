@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 @Entity
@@ -21,6 +23,7 @@ public class Platform {
     private Long platform_id;
     private String platform_name;
 
+    @JsonIgnoreProperties("platform")
     @OneToMany(mappedBy = "platform", cascade = CascadeType.ALL)
     private Set<Question> questionsSet = new HashSet<>();
 

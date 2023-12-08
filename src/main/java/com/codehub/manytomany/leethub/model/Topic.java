@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -23,7 +23,7 @@ public class Topic {
     private Long topic_id;
     private String topic_name;
 
-    @JsonIgnore
+    @JsonIgnoreProperties("topicsSet")
     @ManyToMany(mappedBy = "topicsSet", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Question> questionsSet = new HashSet<>();
 
