@@ -54,32 +54,32 @@ public class QuestionService {
 
     public Question addTopicToQuestion(Long questionId, Long topicId) {
         Optional<Question> optionalQuestion = questionRepository.findById(questionId);
-        Optional<Topic> optionalTopic = topicRepository.findById(topicId);
+    Optional<Topic> optionalTopic = topicRepository.findById(topicId);
 
-        if (optionalQuestion.isPresent() && optionalTopic.isPresent()) {
-            Question question = optionalQuestion.get();
-            Topic topic = optionalTopic.get();
+    if (optionalQuestion.isPresent() && optionalTopic.isPresent()) {
+        Question question = optionalQuestion.get();
+        Topic topic = optionalTopic.get();
 
-            // Check if the association already exists to avoid duplicates
-            if (!question.getTopicsSet().contains(topic)) {
-                question.getTopicsSet().add(topic);
-                questionRepository.save(question);
+        // Check if the association already exists to avoid duplicates
+        if (!question.getTopicsSet().contains(topic)) {
+            question.getTopicsSet().add(topic);
+            questionRepository.save(question);
 
-                // Bidirectional association: Add the question to the topic
-                if (!topic.getQuestionsSet().contains(question)) {
-                    topic.getQuestionsSet().add(question);
-                    topicRepository.save(topic);
-                }
-
-                return question;
-            } else {
-                // Handle case where the association already exists
-                return null;
+            // Bidirectional association: Add the question to the topic
+            if (!topic.getQuestionsSet().contains(question)) {
+                topic.getQuestionsSet().add(question);
+                topicRepository.save(topic);
             }
+
+            return question;
         } else {
-            // Handle case where Question or Topic not found
+            // Handle case where the association already exists
             return null;
         }
+    } else {
+        // Handle case where Question or Topic not found
+        return null;
+    }
     }
 
     public Question addDifficultyToQuestion(Long questionId, Long difficultyId) {
@@ -127,47 +127,52 @@ public class QuestionService {
     }
 
     public Question addUserToQuestion(Long questionId, Long userId) {
+        // Optional<Question> optionalQuestion = questionRepository.findById(questionId);
+        // Optional<User> optionalUser = userService.getUserById(userId);
+
+        // if (optionalQuestion.isPresent() && optionalUser.isPresent()) {
+        //     Question question = optionalQuestion.get();
+        //     User user = optionalUser.get();
+
+        //     // Check if the association already exists to avoid duplicates
+        //     if (!question.getUsers().contains(user)) {
+        //         question.getUsers().add(user);
+        //         return questionRepository.save(question);
+        //     } else {
+        //         // Handle case where the association already exists
+        //         return null;
+        //     }
+        // } else {
+        //     // Handle case where Question or User not found
+        //     return null;
+        // }
         Optional<Question> optionalQuestion = questionRepository.findById(questionId);
-        Optional<User> optionalUser = userService.getUserById(userId);
+    Optional<User> optionalUser = userService.getUserById(userId);
 
-        if (optionalQuestion.isPresent() && optionalUser.isPresent()) {
-            Question question = optionalQuestion.get();
-            User user = optionalUser.get();
+    if (optionalQuestion.isPresent() && optionalUser.isPresent()) {
+        Question question = optionalQuestion.get();
+        User user = optionalUser.get();
 
-            // Check if the association already exists to avoid duplicates
-            if (!question.getUsers().contains(user)) {
-                question.getUsers().add(user);
-                return questionRepository.save(question);
-            } else {
-                // Handle case where the association already exists
-                return null;
+        // Check if the association already exists to avoid duplicates
+        if (!question.getUsers().contains(user)) {
+            question.getUsers().add(user);
+            questionRepository.save(question);
+
+            // Bidirectional association: Add the question to the user
+            if (!user.getAttemptedQuestions().contains(question)) {
+                user.getAttemptedQuestions().add(question);
+                userService.saveUser(user); // Make sure to save the user to persist the changes
             }
+
+            return question;
         } else {
-            // Handle case where Question or User not found
+            // Handle case where the association already exists
             return null;
         }
+    } else {
+        // Handle case where Question or User not found
+        return null;
+    }
     }
 
-    // public Question addAnswerToQuestion(Long questionId, Long answerId) {
-    // Optional<Question> optionalQuestion =
-    // questionRepository.findById(questionId);
-    // Optional<Answer> optionalAnswer = answerService.getAnswerById(answerId);
-
-    // if (optionalQuestion.isPresent() && optionalAnswer.isPresent()) {
-    // Question question = optionalQuestion.get();
-    // Answer answer = optionalAnswer.get();
-
-    // // Check if the association already exists to avoid duplicates
-    // if (!question.getAnswers().contains(answer)) {
-    // question.getAnswers().add(answer);
-    // return questionRepository.save(question);
-    // } else {
-    // // Handle case where the association already exists
-    // return null;
-    // }
-    // } else {
-    // // Handle case where Question or Answer not found
-    // return null;
-    // }
-    // }
 }

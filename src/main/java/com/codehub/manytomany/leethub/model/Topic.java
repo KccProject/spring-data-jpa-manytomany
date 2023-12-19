@@ -22,7 +22,6 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long topic_id;
     private String topic_name;
-
     @JsonIgnoreProperties("topicsSet")
     @ManyToMany(mappedBy = "topicsSet", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Question> questionsSet = new HashSet<>();

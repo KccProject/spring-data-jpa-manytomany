@@ -55,7 +55,6 @@ public class AnswerService {
                 return null;
             }
         } else {
-            // Handle case where Answer or Question not found
             return null;
         }
     }

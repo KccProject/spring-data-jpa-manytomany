@@ -93,17 +93,4 @@ public class QuestionController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    // @PutMapping("/{questionId}/add-answer/{answerId}")
-    // public ResponseEntity<Question> addAnswerToQuestion(
-    // @PathVariable Long questionId,
-    // @PathVariable Long answerId) {
-    // Question updatedQuestion = questionService.addAnswerToQuestion(questionId,
-    // answerId);
-    // if (updatedQuestion != null) {
-    // return ResponseEntity.ok(updatedQuestion);
-    // } else {
-    // return ResponseEntity.notFound().build();
-    // }
-    // }
 }

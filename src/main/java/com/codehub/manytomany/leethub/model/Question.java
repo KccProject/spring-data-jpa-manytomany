@@ -1,7 +1,9 @@
 package com.codehub.manytomany.leethub.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -44,6 +46,8 @@ public class Question {
     private Long ques_likes;
     private Long ques_dislikes;
     private String ques_accepted;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date attemptDate;
 
     @JsonIgnoreProperties("questionsSet")
     @ManyToOne(cascade = CascadeType.ALL)
@@ -53,7 +57,7 @@ public class Question {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE,
             CascadeType.REMOVE }, fetch = FetchType.LAZY)
     @JoinTable(name = "question_topic_mapping", joinColumns = @JoinColumn(name = "question_id"), inverseJoinColumns = @JoinColumn(name = "topic_id"))
-    private Set<Topic> topicsSet = new HashSet<>();
+    private List<Topic> topicsSet = new ArrayList<>();
 
     @JsonIgnoreProperties("questionsSet")
     @ManyToOne(cascade = CascadeType.ALL)
@@ -65,12 +69,6 @@ public class Question {
 
     @ManyToMany
     @JoinTable(name = "user_question_attempt", joinColumns = @JoinColumn(name = "question_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> users = new HashSet<>();
-
-    // for user attempt
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date attemptDate;
-
-    // ADD ALL
+    private List<User> users = new ArrayList<>();
 
 }
